@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,27 +71,43 @@ public class NowPlaying_Fragment extends Fragment {
         ImageButton imageButton_PlayPause = (ImageButton) v.findViewById(R.id.fr_now_playing_ib_playpause);
         ImageButton imageButton_Next = (ImageButton) v.findViewById(R.id.fr_now_playing_ib_next);
 
+
         imageButton_Previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                performPrevious();
             }
         });
 
         imageButton_PlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                performPlayPause();
             }
         });
 
         imageButton_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                performNext();
             }
         });
 
       return v;
+    }
+
+
+    //********* Service App *********
+
+    private void performNext() {
+        Toast.makeText(getActivity(),"Previous Button Pressed",Toast.LENGTH_SHORT).show();
+    }
+
+    private void performPlayPause() {
+        Toast.makeText(getActivity(),"PlayPause Button Pressed",Toast.LENGTH_SHORT).show();
+    }
+
+    private void performPrevious() {
+        Toast.makeText(getActivity(),"Next Button Pressed",Toast.LENGTH_SHORT).show();
     }
 }
