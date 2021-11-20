@@ -63,33 +63,9 @@ public class NowPlaying_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_now_playing_, container, false);
 
-        TextView textView_SongName = (TextView) v.findViewById(R.id.fr_now_playing_tv_songname);
-        TextView textView_Album = (TextView) v.findViewById(R.id.fr_now_playing_tv_album);
-        TextView textView_Artist = (TextView) v.findViewById(R.id.fr_now_playing_tv_artist);
-        ImageButton imageButton_Previous = (ImageButton) v.findViewById(R.id.fr_now_playing_ib_previous);
-        ImageButton imageButton_PlayPause = (ImageButton) v.findViewById(R.id.fr_now_playing_ib_playpause);
-        ImageButton imageButton_Next = (ImageButton) v.findViewById(R.id.fr_now_playing_ib_next);
 
-        imageButton_Previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
-        imageButton_PlayPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        imageButton_Next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
       return v;
     }
