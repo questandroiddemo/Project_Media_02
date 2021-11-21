@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ import SepratePackage.aidlInterface;
 
 public class MainActivity extends AppCompatActivity {
 
-    private aidlInterface aidlObject;
+    private aidlInterface aidlObject = null;
     int PreviousResult,CurrentResult,NextResult;
 
     @Override
@@ -120,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 
+
         imageButton_Previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                PlayPreviousSong()
                 try {
                     PreviousResult = aidlObject.PerformPreviousPlay();
                 } catch (RemoteException e) {
@@ -159,6 +161,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        textView_SongName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        textView_Album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        textView_Artist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
         bindToAIDLService();
 
 }
@@ -186,11 +213,13 @@ public class MainActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
 
             aidlObject = aidlInterface.Stub.asInterface(service);
+            Toast.makeText(getApplicationContext(),"Service Connected", Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Toast.makeText(getApplicationContext(),"Service Disconnected", Toast.LENGTH_SHORT).show();
 
         }
     };
