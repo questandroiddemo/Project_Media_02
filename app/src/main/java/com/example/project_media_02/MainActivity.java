@@ -17,19 +17,25 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.Presenter.ActivityPresenter;
+
 import java.util.List;
 
 import SepratePackage.aidlInterface;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Contract.View {
 
+    Contract.Presenter presenter;
     private aidlInterface aidlObject = null;
     int PreviousResult,CurrentResult,NextResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        presenter = new ActivityPresenter(this);
 
 //        bindToAIDLService();
 //        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_main_tl_tablayout);
@@ -161,31 +167,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        textView_SongName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        textView_Album.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        textView_Artist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-
         bindToAIDLService();
 
 }
@@ -237,6 +218,22 @@ public class MainActivity extends AppCompatActivity {
         Intent explicitIntent = new Intent(implicitIntent);
         explicitIntent.setComponent(component);
         return explicitIntent;
+
+    }
+
+    @Override
+    public void setName(String name) {
+
+
+    }
+
+    @Override
+    public void setArtist(String artist) {
+
+    }
+
+    @Override
+    public void setAlbum(String album) {
 
     }
 }
