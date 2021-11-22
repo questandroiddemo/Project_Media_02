@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.Model.MusicModel;
 import com.example.project_media_02.Presenter.ActivityPresenter;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        presenter = new ActivityPresenter(this);
+       presenter = new ActivityPresenter(this, new MusicModel());
 
 //        bindToAIDLService();
 //        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_main_tl_tablayout);
@@ -87,56 +88,20 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
 
 
-//        View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//
-//            switch (view.getId()) {
-//
-//                case R.id.activity_main_ib_previous:
-//                     //PlayPreviousSong();
-//                    try {
-//                        PreviousResult = aidlObject.PerformPrevious();
-//                    } catch (RemoteException e) {
-//                        e.printStackTrace();
-//                    }
-//                    break;
-//
-//                case R.id.activity_main_ib_playpause:
-//                     //PlayCurrentSong();
-//                    try {
-//                        CurrentResult = aidlObject.PerformCurrent();
-//                    } catch (RemoteException e) {
-//                        e.printStackTrace();
-//                    }
-//                    break;
-//
-//                case R.id.activity_main_ib_next:
-//                   //  PlayNextSong();
-//                    try {
-//                        NextResult = aidlObject.PerformNext();
-//                    } catch (RemoteException e) {
-//                        e.printStackTrace();
-//                    }
-//                    break;
-//
-//                default:
-//                     break;
-//
-//
-//            }
-//        }
 
 
         imageButton_Previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                PlayPreviousSong()
-                try {
-                    PreviousResult = aidlObject.PerformPreviousPlay();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+
+                    presenter.PlayPreviousButtonClick();
+
+
+//                try {
+//                    PreviousResult = aidlObject.PerformPreviousPlay();
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
 
@@ -144,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         imageButton_PlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // PlayCurrentSong();
+               presenter.PlayCurrentButtonClick();
                 try {
                     CurrentResult = aidlObject.PerformCurrentPlay();
                 } catch (RemoteException e) {
@@ -157,12 +122,12 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         imageButton_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // PlayNextSong();
-                try {
-                    NextResult = aidlObject.PerformNextPlay();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+               presenter.PlayNextButtonClick();
+//                try {
+//                    NextResult = aidlObject.PerformNextPlay();
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
 
@@ -187,7 +152,8 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
 
     @Override
-    public void setName(String name) {
+    public void setNam(String nam) {
+
 
 
     }
