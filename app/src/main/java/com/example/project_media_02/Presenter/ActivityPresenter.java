@@ -9,8 +9,12 @@ public class ActivityPresenter implements Contract.Presenter {
         this.view = view;
     }
 
+
+
+
     @Override
     public void PlayPreviousSong() {
+
 
     }
 

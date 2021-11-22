@@ -184,6 +184,26 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 //        return 0;
 //    }
 
+
+
+    @Override
+    public void setName(String name) {
+
+
+    }
+
+    @Override
+    public void setArtist(String artist) {
+
+    }
+
+    @Override
+    public void setAlbum(String album) {
+
+    }
+
+
+
     private void bindToAIDLService() {
         Intent aidlServiceIntent = new Intent("connect_to_aidl_service");
         bindService(convertImplicitIntentToExplicitIntent(aidlServiceIntent,this), serviceConnectionObject, BIND_AUTO_CREATE);
@@ -221,19 +241,5 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
     }
 
-    @Override
-    public void setName(String name) {
 
-
-    }
-
-    @Override
-    public void setArtist(String artist) {
-
-    }
-
-    @Override
-    public void setAlbum(String album) {
-
-    }
 }
