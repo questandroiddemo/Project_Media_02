@@ -2,6 +2,8 @@ package com.example.project_media_02.Model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -9,10 +11,10 @@ import com.example.project_media_02.ContractInterface.Contract;
 
 import SepratePackage.aidlInterface;
 
-public class MusicModel implements Contract.Model {
+public class MusicModel  implements Contract.Model {
     private aidlInterface aidlObject = null;
-    int PreviousResult,CurrentResult,NextResult;
-
+//    int PreviousResult,CurrentResult,NextResult;
+//    private MediaPlayer mediaPlayer;
 
 
     public String nam;
@@ -49,27 +51,32 @@ public class MusicModel implements Contract.Model {
         this.artist = artist;
     }
 
+
+
     @Override
     public void PlayPreviousSong() {
 
-//        try {
-//         PreviousResult =   aidlObject.PerformPreviousPlay();
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
         Log.d("PreviousSong","Previous Song Played");
 
     }
 
     @Override
     public void PlayCurrentSong() {
-        Log.d("CurrentSong","Curent Song Played");
+
+          Log.d("Playsong","Current Song Played");
+
 
     }
+
+
+
+
 
     @Override
     public void PlayNextSong() {
+
         Log.d("NextSong","Next Song Played");
 
     }
+
 }

@@ -18,14 +18,21 @@ public interface Contract {
         void PlayPreviousButtonClick();
         void PlayCurrentButtonClick();
         void PlayNextButtonClick();
-        void PauseSong();
+
     }
 
-    interface Model{
+    interface Model {
 
-        void PlayPreviousSong() ;
+        void PlayPreviousSong();
+
         void PlayCurrentSong();
+
+
         void PlayNextSong();
+
+    }
+
+    interface MusicPlayer{
 
     }
 }

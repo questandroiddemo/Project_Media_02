@@ -30,7 +30,7 @@ public class MyAdapter extends FragmentPagerAdapter {
                 return nowPlaying_fragment;
 
             case 1:
-                Settings_Fragment settings_fragment = new Settings_Fragment();
+                Songlist_Fragment settings_fragment = new Songlist_Fragment();
                 return settings_fragment;
 
             default:

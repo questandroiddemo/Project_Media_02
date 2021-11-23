@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.Model.MusicModel;
+import com.example.project_media_02.Presenter.ActivityPresenter;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link NowPlaying_Fragment#newInstance} factory method to
@@ -57,12 +61,51 @@ public class NowPlaying_Fragment extends Fragment {
         }
     }
 
+    Contract.Presenter presenter = new ActivityPresenter((Contract.View) getActivity(),this,new MusicModel());
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_now_playing_, container, false);
 
+        TextView textView_SongName = v. findViewById(R.id.fr_nowplaying_tv_songname);
+        TextView textView_Album = v. findViewById(R.id.fr_nowplaying_tv_album);
+        TextView textView_Artist = v. findViewById(R.id.fr_nowplaying_tv_artist);
+        ImageButton imageButton_Previous = v. findViewById(R.id.fr_nowplaying_ib_previous);
+        ImageButton imageButton_Play_pause = v. findViewById(R.id.fr_nowplaying_ib_play_pause);
+        ImageButton imageButton_Next = v. findViewById(R.id.fr_nowplaying_ib_next);
+
+
+        imageButton_Previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                presenter.PlayPreviousButtonClick();
+
+            }
+        });
+
+
+        imageButton_Play_pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                presenter.PlayCurrentButtonClick();
+
+            }
+        });
+
+
+        imageButton_Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                presenter.PlayNextButtonClick();
+
+
+            }
+        });
 
 
 

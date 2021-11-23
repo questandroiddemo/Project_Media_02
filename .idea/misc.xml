@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/grad_frag_settings.xml" value="0.12962962962962962" />
+        <entry key="app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.12962962962962962" />
         <entry key="app/src/main/res/drawable/ic_baseline_skip_previous_24.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_equalizer_settings.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_now_playing_.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_now_playing_.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_settings_.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_songlist_.xml" value="0.22" />
       </map>
     </option>
   </component>

@@ -7,25 +7,91 @@
     tools:context=".NowPlaying_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/activity_main_tl_tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorHeight="9dp"
-        app:tabIndicatorColor="@color/Red1"
-        app:tabTextAppearance="@style/Tab"
-        app:tabContentStart="0dp"
-        app:tabMode="scrollable"
-        app:tabMinWidth="355dp"
-        app:tabMaxWidth="550dp"
-        ></com.google.android.material.tabs.TabLayout>
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/activity_main_vp_viewpager"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_main_tl_tablayout"
-        ></androidx.viewpager.widget.ViewPager>
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/images"></ImageView>
+
+
+    <TextView
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Song Name :"
+        android:textAppearance="@style/Text"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="110dp"
+        android:text="Album :"
+        android:textAppearance="@style/Text"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="150dp"
+        android:text="Artist :"
+        android:textAppearance="@style/Text"></TextView>
+
+    <TextView
+        android:id="@+id/fr_nowplaying_tv_songname"
+        android:layout_width="wrap_content"
+        android:text="Songe Name"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="70dp"
+        android:textAppearance="@style/Text1"></TextView>
+
+    <TextView
+        android:id="@+id/fr_nowplaying_tv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="110dp"
+        android:text="Album "
+        android:textAppearance="@style/Text1"></TextView>
+
+    <TextView
+        android:id="@+id/fr_nowplaying_tv_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="150dp"
+        android:text="Artist "
+        android:textAppearance="@style/Text1"></TextView>
+
+    <ImageButton
+        android:id="@+id/fr_nowplaying_ib_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="300dp"
+        android:background="@drawable/ic_baseline_skip_previous_24"></ImageButton>
+
+    <ImageButton
+        android:id="@+id/fr_nowplaying_ib_play_pause"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_baseline_pause_24"></ImageButton>
+
+
+
+    <ImageButton
+        android:id="@+id/fr_nowplaying_ib_next"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="490dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_baseline_skip_next_24"></ImageButton>
+
 
 </FrameLayout>
