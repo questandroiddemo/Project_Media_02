@@ -1,38 +1,18 @@
 package com.example.project_media_02;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.project_media_02.ContractInterface.Contract;
-import com.example.project_media_02.Model.MusicModel;
-import com.example.project_media_02.Presenter.ActivityPresenter;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.List;
 
 import SepratePackage.aidlInterface;
 
 public class MainActivity extends AppCompatActivity {
 
 //    Contract.Presenter presenter;
-//    private aidlInterface aidlObject = null;
+    private aidlInterface aidlObject = null;
 //    int PreviousResult, CurrentResult, NextResult;
 //    MediaPlayer mediaPlayer;
 
@@ -43,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
       //  presenter = new ActivityPresenter(this, new MusicModel());
 
-//        bindToAIDLService();
+       // bindToAIDLService();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_main_tl_tablayout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.activity_main_vp_viewpager);
 
@@ -123,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 //        imageButton_PlayPause.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//               presenter.PlayCurrentButtonClick();
+//
 //                try {
 //                    CurrentResult = aidlObject.PerformCurrentPlay();
 //                } catch (RemoteException e) {
@@ -136,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 //        imageButton_Next.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//               presenter.PlayNextButtonClick();
+//
 //                try {
 //                    NextResult = aidlObject.PerformNextPlay();
 //                } catch (RemoteException e) {
@@ -147,23 +127,23 @@ public class MainActivity extends AppCompatActivity {
 //
 //
 //        bindToAIDLService();
+
+}
+
+//    private int PlayCurrentSong() {
+//        return 0;
+//    }
 //
-//}
-//
-////    private int PlayCurrentSong() {
-////        return 0;
-////    }
-////
-////    private int PlayNextSong() {
-////        return 0;
-////    }
-////
-////
-////    private int PlayPreviousSong() {
-////        return 0;
-////    }
+//    private int PlayNextSong() {
+//        return 0;
+//    }
 //
 //
+//    private int PlayPreviousSong() {
+//        return 0;
+//    }
+
+
 //
 //    @Override
 //    public void setNam(String nam) {
@@ -181,9 +161,9 @@ public class MainActivity extends AppCompatActivity {
 //    public void setAlbum(String album) {
 //
 //    }
-//
-//
-//
+
+
+
 //    private void bindToAIDLService() {
 //        Intent aidlServiceIntent = new Intent("connect_to_aidl_service");
 //        bindService(convertImplicitIntentToExplicitIntent(aidlServiceIntent,this), serviceConnectionObject, BIND_AUTO_CREATE);
@@ -222,4 +202,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-}
+

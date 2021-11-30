@@ -1,25 +1,20 @@
 package com.example.project_media_02.Presenter;
 
-import android.content.pm.PackageManager;
-
-import androidx.fragment.app.FragmentActivity;
-
 import com.example.project_media_02.ContractInterface.Contract;
 import com.example.project_media_02.Model.MusicModel;
 import com.example.project_media_02.NowPlaying_Fragment;
 
-import SepratePackage.aidlInterface;
+public class ActivityPresenter implements Contract.Presenter,Contract.View{
 
-public class ActivityPresenter implements Contract.Presenter, Contract.MusicPlayer {
     private Contract.View view;
     private Contract.Model model;
-   // private Contract.MusicPlayer musicPlayer;
+
+
 
 
     public ActivityPresenter(Contract.View view, NowPlaying_Fragment nowPlaying_fragment, MusicModel model) {
         this.view = view;
         this.model = model;
-
     }
 
 
@@ -27,6 +22,7 @@ public class ActivityPresenter implements Contract.Presenter, Contract.MusicPlay
     public void PlayPreviousButtonClick() {
 
         model.PlayPreviousSong();
+
 
     }
 
@@ -43,4 +39,23 @@ public class ActivityPresenter implements Contract.Presenter, Contract.MusicPlay
     }
 
 
+    @Override
+    public void setpath(String path) {
+
+    }
+
+    @Override
+    public void setNam(String nam) {
+
+    }
+
+    @Override
+    public void setArtist(String artist) {
+
+    }
+
+    @Override
+    public void setAlbum(String album) {
+
+    }
 }

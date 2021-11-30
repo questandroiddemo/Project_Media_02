@@ -1,13 +1,9 @@
 package com.example.project_media_02.ContractInterface;
 
-import android.os.RemoteException;
-
-import SepratePackage.aidlInterface;
-
 public interface Contract {
 
     interface View{
-
+        void setpath(String path);
         void setNam(String nam);
         void setArtist(String artist);
         void setAlbum(String album);
@@ -32,7 +28,5 @@ public interface Contract {
 
     }
 
-    interface MusicPlayer{
 
-    }
 }
