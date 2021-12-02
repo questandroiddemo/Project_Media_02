@@ -2,77 +2,43 @@ package com.example.project_media_02.Model;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.RemoteException;
 import android.util.Log;
 
 import com.example.project_media_02.BindingToService;
 import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.Presenter.ActivityPresenter;
+
+import SepratePackage.aidlInterface;
 
 public class MusicModel  implements Contract.Model {
    static MediaPlayer mediaPlayer;
    int position;
+    private aidlInterface aidlObject = null;
+    int PreviousResult, CurrentResult, NextResult;
+   ActivityPresenter mactivityPresenter;
+    Context mContext;
 
-    public MusicModel() {
+   BindingToService mBindingToService;
 
-    }
-//    public String path;
-//    public String nam;
-//    public String album;
-//    public String artist;
-//
-//    public MusicModel() {
-//
-//        this.path = path;
-//        this.nam = nam;
-//        this.album = album;
-//        this.artist = artist;
-//    }
-//
-//
-//    public String getPath() {
-//        return path;
-//    }
-//
-//    public void setPath(String path) {
-//        this.path = path;
-//    }
-//
-//    public String getNam() {
-//        return nam;
-//    }
-//
-//    @Override
-//    public void setpath(String path) {
-//
-//    }
-//
-//    @Override
-//    public void setNam(String nam) {
-//        this.nam = nam;
-//    }
-//
-//    public String getAlbum() {
-//        return album;
-//    }
-//
-//    @Override
-//    public void setAlbum(String album) {
-//        this.album = album;
-//    }
-//
-//    public String getArtist() {
-//        return artist;
-//    }
-//
-//    @Override
-//    public void setArtist(String artist) {
-//        this.artist = artist;
-//    }
+public MusicModel(ActivityPresenter activityPresenter,Context context)
+{
+    mactivityPresenter = activityPresenter;
+    mContext = context;
+    mBindingToService = BindingToService.getInstance ( context );
 
-    public MusicModel(Contract.Presenter presenter1, Context context){
-        BindingToService bind = BindingToService.getInstance ( context );
-    }
+}
+
+
+
+
     @Override
     public void PlayPreviousSong() {
+        try {
+                    CurrentResult = aidlObject.PerformCurrentPlay();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
 
            Log.d("PreviousSong","Previous Song Played");
 

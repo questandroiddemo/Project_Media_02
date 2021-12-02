@@ -7,12 +7,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-import SepratePackage.aidlInterface;
-
 public class MainActivity extends AppCompatActivity {
 
 //    Contract.Presenter presenter;
-    private aidlInterface aidlObject = null;
+   // private aidlInterface aidlObject = null;
 //    int PreviousResult, CurrentResult, NextResult;
 //    MediaPlayer mediaPlayer;
 

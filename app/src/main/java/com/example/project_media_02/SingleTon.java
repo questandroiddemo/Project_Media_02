@@ -1,11 +1,8 @@
 package com.example.project_media_02;
 
-import android.os.Parcelable;
-import android.os.RemoteException;
 import android.util.Log;
 
 import com.example.project_media_02.ContractInterface.Contract;
-import com.example.project_media_02.Model.MusicModel;
 
 import SepratePackage.aidlInterface;
 
@@ -27,11 +24,7 @@ public class SingleTon implements Contract.Model {
     @Override
     public void PlayCurrentSong() {
         Log.d("Playsong","Current Song Played");
-        try {
-                    CurrentResult = aidlObject.PerformCurrentPlay();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+        
 
     }
 
