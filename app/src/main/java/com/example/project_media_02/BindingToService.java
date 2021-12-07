@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-import com.example.project_media_02.Model.MusicModel;
-
 import SepratePackage.aidlInterface;
 
 
@@ -24,7 +22,7 @@ public class BindingToService {
 
     public static BindingToService getInstance(Context context) {
         if (INSTANCE == null) {
-            synchronized (MusicModel.class) {
+            synchronized (aidlInterface.class) {
                 if (INSTANCE == null)
                     INSTANCE = new BindingToService(context);
             }
@@ -40,12 +38,10 @@ public class BindingToService {
 
     }
 
-    /**
-     * @brief the function is called to bind the application with the service application
-     */
+
     public void bindTOAIDLService() {
         Intent intent = new Intent();
-        intent.setClassName("cSepratePackage","com.example.service");
+        intent.setClassName("SepratePackage","com.example.service");
         context.bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
     }
 
@@ -59,6 +55,7 @@ public class BindingToService {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+
 
         }
     };

@@ -20,7 +20,8 @@ public class ActivityPresenter implements Contract.Presenter{
 
     @Override
     public void PlayPreviousButtonClick() {
-    mMainActivityModel.PlayPreviousSong ();
+
+        mMainActivityModel.PlayPreviousSong ();
     }
 
     @Override
@@ -35,38 +36,6 @@ public class ActivityPresenter implements Contract.Presenter{
 
     }
 
-
-//    public ActivityPresenter(Contract.View view, NowPlaying_Fragment nowPlaying_fragment, MusicModel model) {
-//        this.view = view;
-//        this.model = model;
-//    }
-//
-//    public ActivityPresenter(Contract.View view,MusicModel model) {
-//    }
-//
-//    public ActivityPresenter(Contract.View view,  context) {
-//    }
-
-
-//    @Override
-//    public void PlayPreviousButtonClick() {
-//
-//        model.PlayPreviousSong();
-//
-//
-//    }
-//
-//    @Override
-//    public void PlayCurrentButtonClick() {
-//        model.PlayCurrentSong();
-//
-//    }
-//
-//    @Override
-//    public void PlayNextButtonClick() {
-//        model.PlayNextSong();
-//
-//    }
 
 
 

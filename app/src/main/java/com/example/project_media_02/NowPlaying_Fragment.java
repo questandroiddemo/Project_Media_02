@@ -58,6 +58,12 @@ public class NowPlaying_Fragment extends Fragment implements Contract.View {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+//            mediaview interface
+//                    notification from service
+
+            //
+
+//
         }
 
     }
@@ -71,8 +77,10 @@ public class NowPlaying_Fragment extends Fragment implements Contract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_now_playing_, container, false);
-presenter = new ActivityPresenter ( this, (FragmentActivity) getContext () );
+
+        presenter = new ActivityPresenter ( this, (FragmentActivity) getContext () );
        // presenter = new ActivityPresenter ( (Contract.View)getActivity (),this,new MusicModel ());
         TextView textView_SongName = v. findViewById(R.id.fr_nowplaying_tv_songname);
         TextView textView_Album = v. findViewById(R.id.fr_nowplaying_tv_album);
