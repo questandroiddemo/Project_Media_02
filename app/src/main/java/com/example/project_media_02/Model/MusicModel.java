@@ -14,21 +14,19 @@ public class MusicModel  implements Contract.Model {
    BindingToService mBindingToService;
 
 
-public MusicModel(ActivityPresenter activityPresenter,Context context)
-{
+ public MusicModel(ActivityPresenter activityPresenter,Context context)
+ {
     mactivityPresenter = activityPresenter;
     mContext = context;
     mBindingToService = BindingToService.getInstance ( context );
 
 
-}
-
+ }
 
 
 
     @Override
     public void PlayPreviousSong() {
-
 
 
            Log.d("PreviousSong","Previous Song Played");
