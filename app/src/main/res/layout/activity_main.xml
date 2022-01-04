@@ -6,25 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/activity_main_tl_tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorHeight="9dp"
-        app:tabIndicatorColor="@color/Red1"
-        app:tabTextAppearance="@style/Tab"
-        app:tabContentStart="0dp"
-        app:tabMode="scrollable"
-        app:tabMinWidth="355dp"
-        app:tabMaxWidth="550dp"
-        ></com.google.android.material.tabs.TabLayout>
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/activity_main_vp_viewpager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/activity_main_tl_tablayout"
-        ></androidx.viewpager.widget.ViewPager>
 
     </RelativeLayout>

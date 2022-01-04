@@ -1,55 +1,58 @@
 package com.example.project_media_02.Model;
-
-import android.content.Context;
-import android.util.Log;
-
-import com.example.project_media_02.BindingToService;
-import com.example.project_media_02.ContractInterface.Contract;
-import com.example.project_media_02.Presenter.ActivityPresenter;
-
-public class MusicModel  implements Contract.Model {
-
-   ActivityPresenter mactivityPresenter;
-   Context mContext;
-   BindingToService mBindingToService;
-
-
- public MusicModel(ActivityPresenter activityPresenter,Context context)
- {
-    mactivityPresenter = activityPresenter;
-    mContext = context;
-    mBindingToService = BindingToService.getInstance ( context );
-
-
- }
-
-
-
-    @Override
-    public void PlayPreviousSong() {
-
-
-           Log.d("PreviousSong","Previous Song Played");
-
-    }
-
-    @Override
-    public void PlayCurrentSong() {
-
-
-          Log.d("Playsong","Current Song Played");
-
-
-    }
-
-
-
-    @Override
-    public void PlayNextSong() {
-
-        Log.d("NextSong","Next Song Played");
-
-    }
-
-
-}
+//
+//import android.util.Log;
+//
+//import com.example.project_media_02.BindToService;
+//import com.example.project_media_02.ContractInterface.Interface_NowPlaying_Model;
+//import com.example.project_media_02.ContractInterface.Interface_NowPlaying_Presenter;
+//
+//public class MusicModel  implements Interface_NowPlaying_Model.Model {
+//
+////    private final Interface_NowPlaying_Presenter presenter;
+////    ActivityPresenter mactivityPresenter;
+////   Context mContext;
+//   BindToService bindToService;
+//
+//
+//
+//// public MusicModel(ActivityPresenter activityPresenter,Context context)
+//// {
+////    mactivityPresenter = activityPresenter;
+////    mContext = context;
+////    //mBindingToService = BindToService.getInstance ( context );
+////
+////
+//// }
+//
+//    public MusicModel(Interface_NowPlaying_Presenter presenter) {
+//       this.presenter = presenter;
+//    }
+//    Interface_NowPlaying_Presenter presenter;
+//
+//    @Override
+//    public int PlayPreviousSong() {
+////Previous = bindToService.PlayPreviousSong ();
+////
+////        return Previous;
+//        return 0;
+//    }
+//
+//    @Override
+//    public int PlayCurrentSong()  {
+//
+//return Log.d ( "nnn","hhjj" );
+//
+//    }
+//
+//
+//
+//    @Override
+//    public int PlayNextSong() {
+////        Previous = bindToService.PlayPreviousSong ();
+////
+//        return Log.d("NextSong","Next Song Played");
+//
+//    }
+//
+//
+//}
