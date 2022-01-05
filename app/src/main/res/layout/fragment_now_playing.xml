@@ -18,7 +18,8 @@
             android:padding="40dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/images"/>
+            android:src="@drawable/images"
+            android:id="@+id/imageView"/>
 
         <LinearLayout
             android:orientation="vertical"

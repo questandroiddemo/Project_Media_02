@@ -1,26 +1,30 @@
 package com.example.project_media_02;
 
 import android.os.Bundle;
-
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
-
+import SepratePackage.aidlInterface;
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MainFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 public class MainFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    static aidlInterface aidlInterface;
+    Boolean connected = false;
     View v;
 
     public MainFragment() {
@@ -40,6 +44,37 @@ public class MainFragment extends Fragment {
         viewPagerAdapter.addFragments(new NowPlayingFragment(),"Now playing");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        Intent intent = new Intent("com.example.mediaservice.AIDL");
+
+        intent.setClassName("com.example.service",
+                "com.example.service.MediaService");
+        if (getActivity().getBaseContext().getApplicationContext().bindService(intent, serviceConnectionObject, Context.BIND_AUTO_CREATE)) {
+            connected = true;
+            Toast.makeText(getContext(), "Bind service Successful - " + connected, Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(), "BindServiceFailed" + connected, Toast.LENGTH_SHORT).show();
+
+        }
+
         return v;
     }
+
+    ServiceConnection serviceConnectionObject = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+
+            aidlInterface = SepratePackage.aidlInterface.Stub.asInterface(iBinder);
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+        }
+    };
+
+    public static aidlInterface getAidl(){
+        return aidlInterface;
+    }
+
+
+
 }
