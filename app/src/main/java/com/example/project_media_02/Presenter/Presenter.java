@@ -1,26 +1,26 @@
 package com.example.project_media_02.Presenter;
 
-import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.View.ContractView;
 import com.example.project_media_02.MainFragment;
 import com.example.project_media_02.Model.Model;
 import com.example.project_media_02.NowPlayingFragment;
 
 import java.util.List;
 
-public class Presenter implements Contract.Presenter {
+public class Presenter implements ContractPresenter {
 
     Model model= new Model();
-    Contract.View view;
+    ContractView.View view;
     MainFragment mainFragment;
-    Contract.NowPlayingView nowPlayingView;
-    Presenter presenter;
+    ContractView.NowPlayingView nowPlayingView;
+    ContractPresenter presenter;
     int index=0;
     int songListSize;
     Thread updateSeekBar = new Thread();
     int totalDuration;
     int currentPosition;
 
-    public Presenter(Contract.View view) {
+    public Presenter(ContractView.View view) {
         this.view = view;
         model=new Model(presenter);
     }
@@ -63,7 +63,7 @@ public class Presenter implements Contract.Presenter {
         model.playSong(index);
         songDetails = model.getSongDetails(index);
         System.out.println("inside get song details now playing object value " + nowPlayingView);
-        nowPlayingView= (Contract.NowPlayingView) new NowPlayingFragment();
+        nowPlayingView= (ContractView.NowPlayingView) new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
 
     }
@@ -84,14 +84,14 @@ public class Presenter implements Contract.Presenter {
         model.playSong(index);
         songDetails = model.getSongDetails(index);
         System.out.println("inside get song details now playing object value " + nowPlayingView);
-        nowPlayingView = (Contract.NowPlayingView) new NowPlayingFragment();
+        nowPlayingView = (ContractView.NowPlayingView) new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
     }
 
     @Override
     public void getSongDetails(int position) {
         index =position;
-        nowPlayingView= (Contract.NowPlayingView) new NowPlayingFragment();
+        nowPlayingView= (ContractView.NowPlayingView) new NowPlayingFragment();
         List<String> songDetails;
         //get details of current song
         songDetails=model.getSongDetails(position);

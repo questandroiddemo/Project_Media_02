@@ -14,13 +14,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.View.ContractView;
 import com.example.project_media_02.Presenter.Presenter;
 
 import java.util.List;
-public class NowPlayingFragment extends Fragment implements Contract.NowPlayingView {
+public class NowPlayingFragment extends Fragment implements ContractView.NowPlayingView {
 
     Presenter presenter;
     private Context mContext;

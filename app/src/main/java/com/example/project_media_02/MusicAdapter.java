@@ -9,12 +9,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.project_media_02.ContractInterface.Contract;
+
+import com.example.project_media_02.Presenter.ContractPresenter;
 import com.example.project_media_02.Presenter.Presenter;
 import java.util.List;
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder> {
 
-    Contract.Presenter presenter;
+    ContractPresenter presenter;
     private Context mContext;
     private List<String> allAudio;
     MusicAdapter(Context mContext, List<String> allAudio){

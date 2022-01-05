@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.project_media_02.ContractInterface.Contract;
+import com.example.project_media_02.View.ContractView;
 import com.example.project_media_02.Presenter.Presenter;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class SongsFragment extends Fragment implements Contract.View{
+public class SongsFragment extends Fragment implements ContractView.View{
 
     Presenter presenter;
     RecyclerView recyclerView;

@@ -2,19 +2,20 @@ package com.example.project_media_02.Model;
 
 import android.os.RemoteException;
 
-import com.example.project_media_02.ContractInterface.Contract;
 import com.example.project_media_02.MainFragment;
+import com.example.project_media_02.Presenter.ContractPresenter;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class Model implements Contract.Model {
+public class Model implements ContractModel {
     MainFragment mainFragment;
 
-    public Model(Contract.Presenter presenter) {
+    public Model(ContractPresenter presenter) {
         this.presenter = presenter;
         mainFragment =new MainFragment();
     }
-    Contract.Presenter presenter;
+    ContractPresenter presenter;
 
     public Model() {
 
