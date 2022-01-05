@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.project_media_02.Model.Model;
 import com.google.android.material.tabs.TabLayout;
 import SepratePackage.aidlInterface;
 /**
@@ -23,8 +25,8 @@ import SepratePackage.aidlInterface;
 public class MainFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    static aidlInterface aidlInterface;
     Boolean connected = false;
+    Model model;
     View v;
 
     public MainFragment() {
@@ -45,11 +47,10 @@ public class MainFragment extends Fragment {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Intent intent = new Intent("com.example.mediaservice.AIDL");
-
+        Intent intent = new Intent("com.example.service.AIDL");
         intent.setClassName("com.example.service",
                 "com.example.service.MediaService");
-        if (getActivity().getBaseContext().getApplicationContext().bindService(intent, serviceConnectionObject, Context.BIND_AUTO_CREATE)) {
+        if (getActivity().getBaseContext().getApplicationContext().bindService(intent,model.getServiceConnectionObject(), Context.BIND_AUTO_CREATE)) {
             connected = true;
             Toast.makeText(getContext(), "Bind service Successful - " + connected, Toast.LENGTH_LONG).show();
         } else {
@@ -59,22 +60,6 @@ public class MainFragment extends Fragment {
 
         return v;
     }
-
-    ServiceConnection serviceConnectionObject = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-
-            aidlInterface = SepratePackage.aidlInterface.Stub.asInterface(iBinder);
-        }
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-        }
-    };
-
-    public static aidlInterface getAidl(){
-        return aidlInterface;
-    }
-
 
 
 }
