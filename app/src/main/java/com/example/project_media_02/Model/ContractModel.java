@@ -8,7 +8,4 @@ public interface ContractModel {
     void playSong(int position);
     boolean playPauseSong();
     List<String> getSongDetails(int position);
-    int getcPosition();
-    void seekToCall(int progress);
-
 }

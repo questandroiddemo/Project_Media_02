@@ -12,8 +12,6 @@ public interface ContractView {
     //for nowPlayingFragment
     interface NowPlayingView{
         void setSongDetails(List<String> songDetails);
-        void setProgress(int currentPosition);
-        void setMax(int totalDuration);
     }
 
 }

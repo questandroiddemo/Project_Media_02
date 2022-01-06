@@ -55,26 +55,6 @@ public class Model implements ContractModel {
     }
 
     @Override
-    public int getcPosition() {
-        int cPosition = 0;
-        try {
-            cPosition = MainFragment.getAidl().getcPosition();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return cPosition;
-    }
-
-    @Override
-    public void seekToCall(int progress) {
-        try {
-            MainFragment.getAidl().seekToCall(progress);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-
-    }
-    @Override
     public boolean playPauseSong() {
         boolean playPauseStatus = false;
         try {

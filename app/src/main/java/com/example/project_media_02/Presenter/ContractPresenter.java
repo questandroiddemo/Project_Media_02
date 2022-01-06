@@ -8,7 +8,6 @@ public interface ContractPresenter {
     void NextClick();
     void PreviousClick();
     void getSongDetails(int position);
-    int getcPosition();
 
 }
 

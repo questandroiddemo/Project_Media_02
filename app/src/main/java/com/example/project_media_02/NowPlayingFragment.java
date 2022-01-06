@@ -23,13 +23,11 @@ import java.util.List;
 public class NowPlayingFragment extends Fragment implements ContractView.NowPlayingView {
     Presenter presenter;
 
-    static TextView title1,album1,artist1,totalDuration,playerPosition;
+    static TextView title1,album1,artist1;
     static ImageView imageView;
     static ImageButton btn_play_pause,btn_previous,btn_next;
-    static SeekBar songSeekBar;
     View v;
     boolean playStatus;
-    int cPosition=0;
 
     public NowPlayingFragment() {
         // Required empty public constructor
@@ -47,13 +45,10 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         title1=v.findViewById(R.id.text);
         album1=v.findViewById(R.id.album);
         artist1=v.findViewById(R.id.artist);
-        totalDuration=v.findViewById(R.id.totalDuration);
-        playerPosition=v.findViewById(R.id.playerPosition);
         imageView=v.findViewById(R.id.imageView);
         btn_play_pause=v.findViewById(R.id.fr_nowplaying_ib_play_pause);
         btn_next=v.findViewById(R.id.fr_nowplaying_ib_next);
         btn_previous=v.findViewById(R.id.fr_nowplaying_ib_previous);
-        songSeekBar=v.findViewById(R.id.songSeekBar);
         presenter = new Presenter();
 
         btn_play_pause.setOnClickListener(new View.OnClickListener() {
@@ -89,27 +84,6 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
             }
         });
 
-        songSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //
-                System.out.println("progress value"+progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                //
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                System.out.println("onStopTrackingTouch "+seekBar.getProgress());
-                presenter.seekToCall(seekBar.getProgress());
-                //mediaPlayer.seekTo(seekBar.getProgress());
-            }
-        });
-
-
         return v;
     }
 
@@ -121,7 +95,6 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         album1.setText("album   :   "+songDetails.get(1));
         artist1.setText("Artist   :   "+songDetails.get(2));
         String duration = convert(songDetails.get(4));//to convert total duration into minutes and seconds
-        totalDuration.setText(duration);
 
         String uri = songDetails.get(5);
         if(uri!=null) {
@@ -163,17 +136,6 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
 
         // return timer string
         return finalTimerString;
-    }
-
-    @Override
-    public void setProgress(int currentPosition) {
-        songSeekBar.setProgress(currentPosition);
-        // playerPosition.setText(String.valueOf(currentPosition));
-    }
-
-    @Override
-    public void setMax(int totalDuration) {
-        songSeekBar.setMax(totalDuration);
     }
 
 }
