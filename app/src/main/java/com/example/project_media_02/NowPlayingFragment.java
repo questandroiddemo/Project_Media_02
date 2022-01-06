@@ -176,5 +176,4 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         songSeekBar.setMax(totalDuration);
     }
 
-
 }

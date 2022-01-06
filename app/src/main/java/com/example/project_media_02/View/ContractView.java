@@ -6,9 +6,7 @@ public interface ContractView {
 
     //for songListFragment
     interface View{
-        //updateEditText(String title,String album,String artist , String path);
         void setSongList(List<String> allAudio);
-        //void setSongDetails(List<String> songDetails);
     }
 
     //for nowPlayingFragment

@@ -12,7 +12,6 @@ public class Presenter implements ContractPresenter {
     ContractView.View view;
     ContractView.NowPlayingView nowPlayingView;
     Presenter presenter;
-    MainFragment mainFragment;
     int index=0;
     int songListSize;
     Thread updateSeekBar = new Thread();
@@ -29,7 +28,6 @@ public class Presenter implements ContractPresenter {
 
     @Override
     public void getAllAudio(){
-        //System.out.println("getAllAudio in presenter call output "+model.getAllAudio());
         List<String> songsList;
         songsList = model.getAllAudio();
         view.setSongList(songsList); // To set song list in Song List Fragment
@@ -65,7 +63,6 @@ public class Presenter implements ContractPresenter {
     private void updateSeekBarMethod(List<String> songDetails) {
         System.out.println(" updateSeekBarMethod method called.........");
         totalDuration = Integer.parseInt(songDetails.get(4));
-        //updateSeekBar.start();
         updateSeekBar =  new Thread() {
             @Override
             public void run() {
