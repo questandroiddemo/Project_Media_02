@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.example.project_media_02.Model.Model;
 import com.google.android.material.tabs.TabLayout;
 /**
  * A simple {@link Fragment} subclass.
@@ -42,9 +41,9 @@ public class MainFragment extends Fragment {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Intent intent = new Intent("com.keltrontraining.service.AIDL");
-        intent.setClassName("com.keltrontraining.service",
-                "com.keltrontraining.service.MediaService");
+        Intent intent = new Intent("com.example.service.AIDL");
+        intent.setClassName("com.example.mediaservice",
+                "com.example.service.MediaService");
         if (getActivity().getBaseContext().getApplicationContext().bindService(intent, serviceConnectionObject, Context.BIND_AUTO_CREATE)) {
             connected = true;
             Toast.makeText(getContext(), "Bind service Successful - " + connected, Toast.LENGTH_LONG).show();
