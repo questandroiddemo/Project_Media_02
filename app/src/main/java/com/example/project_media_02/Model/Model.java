@@ -7,15 +7,13 @@ import com.example.project_media_02.Presenter.ContractPresenter;
 import java.util.List;
 import java.util.ArrayList;
 
-import SepratePackage.aidlInterface;
-
 public class Model implements ContractModel {
     MainFragment mainFragment;
-
     public Model(ContractPresenter presenter) {
         this.presenter = presenter;
-        mainFragment =new MainFragment();
+        mainFragment = new MainFragment();
     }
+
     ContractPresenter presenter;
 
     public Model() {
@@ -26,7 +24,7 @@ public class Model implements ContractModel {
     public List<String> getAllAudio() {
         ArrayList<String> songTitle = new ArrayList<>();
         try {
-            songTitle= (ArrayList<String>)MainFragment.getAidl().getAllAudio();
+            songTitle = (ArrayList<String>)MainFragment.getAidl().getAllAudio();
             System.out.println(MainFragment.getAidl().getAllAudio());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -44,24 +42,12 @@ public class Model implements ContractModel {
     }
 
     @Override
-    public boolean playPauseSong() {
-        boolean playPauseStatus = false;
-        try {
-            playPauseStatus = MainFragment.getAidl().playPauseSong();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        System.out.println("playPause in model called");
-        return playPauseStatus;
-    }
-
-    @Override
     public List<String> getSongDetails(int position) {
         System.out.println("getSongDetails()  called in model -----------------");
         List<String> songDetails = null;
         try {
             System.out.println("song details received at model");
-            songDetails= (List<String>) MainFragment.getAidl().getSongDetails(position);
+            songDetails = (List<String>) MainFragment.getAidl().getSongDetails(position);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -72,7 +58,7 @@ public class Model implements ContractModel {
     public int getcPosition() {
         int cPosition = 0;
         try {
-            cPosition = mainFragment.getAidl().getcposition();
+            cPosition = MainFragment.getAidl().getcPosition();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -88,6 +74,18 @@ public class Model implements ContractModel {
         }
 
     }
+    @Override
+    public boolean playPauseSong() {
+        boolean playPauseStatus = false;
+        try {
+            playPauseStatus = MainFragment.getAidl().playPauseSong();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        System.out.println("playPause in model called");
+        return playPauseStatus;
+    }
+}
 
    /* public ServiceConnection getServiceConnectionObject() {
         ServiceConnection serviceConnectionObject = new ServiceConnection() {
@@ -106,4 +104,3 @@ public class Model implements ContractModel {
     public static aidlInterface getAidl(){
         return aidlInterface;
     }*/
-}

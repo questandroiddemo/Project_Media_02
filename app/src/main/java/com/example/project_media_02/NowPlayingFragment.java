@@ -19,57 +19,53 @@ import com.example.project_media_02.View.ContractView;
 import com.example.project_media_02.Presenter.Presenter;
 
 import java.util.List;
-public class NowPlayingFragment extends Fragment implements ContractView.NowPlayingView {
 
+public class NowPlayingFragment extends Fragment implements ContractView.NowPlayingView {
     Presenter presenter;
-    private Context mContext;
+
+    static TextView title1,album1,artist1,totalDuration,playerPosition;
+    static ImageView imageView;
+    static ImageButton btn_play_pause,btn_previous,btn_next;
+    static SeekBar songSeekBar;
+    View v;
+    boolean playStatus;
+    int cPosition=0;
 
     public NowPlayingFragment() {
         // Required empty public constructor
     }
-
-
-    static TextView title1, album1, artist1, totalDuration, playerPosition;
-    static ImageView imageView;
-    static ImageButton btn_play_pause, btn_previous, btn_next;
-    static SeekBar songSeekBar;
-    View v;
-    boolean playStatus;
-    int cPosition = 0;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_now_playing, container, false);
-
-
-        title1 = v.findViewById(R.id.text);
-        album1 = v.findViewById(R.id.album);
-        artist1 = v.findViewById(R.id.artist);
-        //totalDuration=v.findViewById(R.id.totalDuration);
-        // playerPosition=v.findViewById(R.id.playerPosition);
-        imageView = v.findViewById(R.id.imageView);
-        btn_play_pause = v.findViewById(R.id.fr_nowplaying_ib_play_pause);
-        btn_next = v.findViewById(R.id.fr_nowplaying_ib_next);
-        btn_previous = v.findViewById(R.id.fr_nowplaying_ib_previous);
-        //songSeekBar=v.findViewById(R.id.songSeekBar);
+        title1=v.findViewById(R.id.text);
+        album1=v.findViewById(R.id.album);
+        artist1=v.findViewById(R.id.artist);
+        totalDuration=v.findViewById(R.id.totalDuration);
+        playerPosition=v.findViewById(R.id.playerPosition);
+        imageView=v.findViewById(R.id.imageView);
+        btn_play_pause=v.findViewById(R.id.fr_nowplaying_ib_play_pause);
+        btn_next=v.findViewById(R.id.fr_nowplaying_ib_next);
+        btn_previous=v.findViewById(R.id.fr_nowplaying_ib_previous);
+        songSeekBar=v.findViewById(R.id.songSeekBar);
         presenter = new Presenter();
+
         btn_play_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                playStatus = presenter.PlayPauseButtonClick();
+                playStatus= presenter.PlayPauseButtonClick();
                 System.out.println("playpause onclick called");
-                if (playStatus == true) {
+                if(playStatus==true) {
                     btn_play_pause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-                } else {
+                }
+                else {
                     btn_play_pause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
                 }
 
@@ -97,7 +93,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //
-                System.out.println("progress value" + progress);
+                System.out.println("progress value"+progress);
             }
 
             @Override
@@ -107,11 +103,13 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                System.out.println("onStopTrackingTouch " + seekBar.getProgress());
-                //presenter.seekToCall(seekBar.getProgress());
+                System.out.println("onStopTrackingTouch "+seekBar.getProgress());
+                presenter.seekToCall(seekBar.getProgress());
                 //mediaPlayer.seekTo(seekBar.getProgress());
             }
         });
+
+
         return v;
     }
 
@@ -127,9 +125,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
 
         String uri = songDetails.get(5);
         if(uri!=null) {
-//            byte[] img = uri.getBytes();
-//            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-//            imageView.setImageBitmap(bitmap);
+//
             imageView.setImageResource(R.drawable.images);
         }
         else
@@ -172,10 +168,13 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
     @Override
     public void setProgress(int currentPosition) {
         songSeekBar.setProgress(currentPosition);
+        // playerPosition.setText(String.valueOf(currentPosition));
     }
 
     @Override
     public void setMax(int totalDuration) {
         songSeekBar.setMax(totalDuration);
     }
+
+
 }

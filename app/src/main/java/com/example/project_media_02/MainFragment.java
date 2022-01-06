@@ -8,24 +8,24 @@ import android.content.Intent;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import SepratePackage.aidlInterface;
+import AidlPackage.AidlInterface;
 import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.project_media_02.Model.Model;
 import com.google.android.material.tabs.TabLayout;
-/**
- * A simple {@link Fragment} subclass.
- * Use the  factory method to
- * create an instance of this fragment.
- */
+
+
 public class MainFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     Boolean connected = false;
-    static aidlInterface aidlInterface;
+    Model model;
     View v;
+    static AidlInterface aidlInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,15 +41,22 @@ public class MainFragment extends Fragment {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Intent intent = new Intent("com.example.service.AIDL");
+        //viewPager.setCurrentItem(0); //can determine launching fragment with this line of code
+
+        //initViewPager();
+
+        Intent intent = new Intent("com.example.mediaservice.AIDL");
+
         intent.setClassName("com.example.mediaservice",
-                "com.example.service.MediaService");
+                "com.example.mediaservice.MediaService");
         if (getActivity().getBaseContext().getApplicationContext().bindService(intent, serviceConnectionObject, Context.BIND_AUTO_CREATE)) {
             connected = true;
             Toast.makeText(getContext(), "Bind service Successful - " + connected, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getContext(), "BindServiceFailed" + connected, Toast.LENGTH_SHORT).show();
+
         }
+        //return inflater.inflate(R.layout.fragment_main, container, false);
         return v;
     }
 
@@ -57,16 +64,14 @@ public class MainFragment extends Fragment {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
 
-            aidlInterface = SepratePackage.aidlInterface.Stub.asInterface(iBinder);
+            aidlInterface = AidlInterface.Stub.asInterface(iBinder);
         }
-
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
         }
     };
 
-    public static aidlInterface getAidl() {
+    public static AidlInterface getAidl(){
         return aidlInterface;
-
     }
 }

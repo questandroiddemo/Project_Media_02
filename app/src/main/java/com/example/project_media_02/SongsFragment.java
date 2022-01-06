@@ -21,7 +21,6 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class SongsFragment extends Fragment implements ContractView.View{
-
     Presenter presenter;
     RecyclerView recyclerView;
     MusicAdapter musicAdapter;
@@ -30,10 +29,8 @@ public class SongsFragment extends Fragment implements ContractView.View{
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_songs, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -50,4 +47,6 @@ public class SongsFragment extends Fragment implements ContractView.View{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(musicAdapter);
     }
+
+
 }

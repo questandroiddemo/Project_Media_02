@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project_media_02.Presenter.ContractPresenter;
 import com.example.project_media_02.Presenter.Presenter;
 import java.util.List;
-public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder> {
 
+
+public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder>  {
     ContractPresenter presenter;
     private Context mContext;
     private List<String> allAudio;
@@ -64,4 +65,5 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
             album_art = itemView.findViewById(R.id.music_img);
         }
     }
+
 }

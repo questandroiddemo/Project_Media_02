@@ -8,11 +8,11 @@ import com.example.project_media_02.NowPlayingFragment;
 import java.util.List;
 
 public class Presenter implements ContractPresenter {
-
     Model model= new Model();
     ContractView.View view;
     ContractView.NowPlayingView nowPlayingView;
     Presenter presenter;
+    MainFragment mainFragment;
     int index=0;
     int songListSize;
     Thread updateSeekBar = new Thread();
@@ -28,10 +28,11 @@ public class Presenter implements ContractPresenter {
     }
 
     @Override
-    public void getAllAudio() {
+    public void getAllAudio(){
+        //System.out.println("getAllAudio in presenter call output "+model.getAllAudio());
         List<String> songsList;
         songsList = model.getAllAudio();
-        view.setSongList(songsList);
+        view.setSongList(songsList); // To set song list in Song List Fragment
     }
 
     @Override
@@ -44,6 +45,61 @@ public class Presenter implements ContractPresenter {
     @Override
     public void playSong(int position) {
         model.playSong(position);
+    }
+
+    @Override
+    public void getSongDetails(int position) {
+        index =position;
+        nowPlayingView= new NowPlayingFragment();
+        List<String> songDetails;
+        //get details of current song
+        songDetails=model.getSongDetails(position);
+
+        //to set song details and seekbar timer on nowPlaying view
+        nowPlayingView.setSongDetails(songDetails);
+        updateSeekBarMethod(songDetails);
+        updateSeekBar.start();
+
+    }
+
+    private void updateSeekBarMethod(List<String> songDetails) {
+        System.out.println(" updateSeekBarMethod method called.........");
+        totalDuration = Integer.parseInt(songDetails.get(4));
+        //updateSeekBar.start();
+        updateSeekBar =  new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                System.out.println("Thread run method called.........");
+                System.out.println("total duration : "+totalDuration);
+                System.out.println("current position : "+currentPosition);
+
+
+                // int totalDuration = mediaPlayer.getDuration();
+                while (totalDuration > currentPosition) {
+                    try {
+                        sleep(100);
+                        currentPosition = model.getcPosition();
+                        System.out.println("cposition in thread : "+currentPosition);
+                        nowPlayingView.setProgress(currentPosition);
+                        nowPlayingView.setMax(totalDuration);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        };
+
+
+    }
+
+
+    @Override
+    public int getcPosition() {
+        int cPosition =  model.getcPosition();
+        return cPosition;
     }
 
     @Override
@@ -62,7 +118,7 @@ public class Presenter implements ContractPresenter {
         model.playSong(index);
         songDetails = model.getSongDetails(index);
         System.out.println("inside get song details now playing object value " + nowPlayingView);
-        nowPlayingView= (ContractView.NowPlayingView) new NowPlayingFragment();
+        nowPlayingView= new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
 
     }
@@ -83,56 +139,11 @@ public class Presenter implements ContractPresenter {
         model.playSong(index);
         songDetails = model.getSongDetails(index);
         System.out.println("inside get song details now playing object value " + nowPlayingView);
-        nowPlayingView = new NowPlayingFragment();
+        nowPlayingView= new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
     }
 
-    @Override
-    public void getSongDetails(int position) {
-        index =position;
-        nowPlayingView= (ContractView.NowPlayingView) new NowPlayingFragment();
-        List<String> songDetails;
-        //get details of current song
-        songDetails=model.getSongDetails(position);
-
-        //to set song details and seekbar timer on nowPlaying view
-        nowPlayingView.setSongDetails(songDetails);
-        updateSeekBarMethod(songDetails);
-        updateSeekBar.start();
-    }
-    private void updateSeekBarMethod(List<String> songDetails) {
-        System.out.println(" updateSeekBarMethod method called.........");
-        totalDuration = Integer.parseInt(songDetails.get(4));
-        //updateSeekBar.start();
-        updateSeekBar = new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                System.out.println("Thread run method called.........");
-                System.out.println("total duration : " + totalDuration);
-                System.out.println("current position : " + currentPosition);
-
-
-                // int totalDuration = mediaPlayer.getDuration();
-                while (totalDuration > currentPosition) {
-                    try {
-                        sleep(100);
-                        currentPosition = model.getcPosition();
-                        System.out.println("cposition in thread : " + currentPosition);
-                        nowPlayingView.setProgress(currentPosition);
-                        nowPlayingView.setMax(totalDuration);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        };
-    }
-
-    @Override
-    public int getcPosition() {
-        int cPosition =  model.getcPosition();
-        return cPosition;
+    public void seekToCall(int progress) {
+        model.seekToCall(progress);//change media player current position on seek bar change
     }
 }
