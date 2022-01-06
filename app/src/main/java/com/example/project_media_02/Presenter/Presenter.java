@@ -11,9 +11,8 @@ public class Presenter implements ContractPresenter {
 
     Model model= new Model();
     ContractView.View view;
-    MainFragment mainFragment;
     ContractView.NowPlayingView nowPlayingView;
-    ContractPresenter presenter;
+    Presenter presenter;
     int index=0;
     int songListSize;
     Thread updateSeekBar = new Thread();
@@ -84,7 +83,7 @@ public class Presenter implements ContractPresenter {
         model.playSong(index);
         songDetails = model.getSongDetails(index);
         System.out.println("inside get song details now playing object value " + nowPlayingView);
-        nowPlayingView = (ContractView.NowPlayingView) new NowPlayingFragment();
+        nowPlayingView = new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
     }
 

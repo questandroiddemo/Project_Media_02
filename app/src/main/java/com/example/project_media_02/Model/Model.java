@@ -1,8 +1,4 @@
 package com.example.project_media_02.Model;
-
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 import android.os.RemoteException;
 
 import com.example.project_media_02.MainFragment;
@@ -15,7 +11,6 @@ import SepratePackage.aidlInterface;
 
 public class Model implements ContractModel {
     MainFragment mainFragment;
-    static aidlInterface aidlInterface;
 
     public Model(ContractPresenter presenter) {
         this.presenter = presenter;
@@ -31,8 +26,8 @@ public class Model implements ContractModel {
     public List<String> getAllAudio() {
         ArrayList<String> songTitle = new ArrayList<>();
         try {
-            songTitle= (ArrayList<String>) getAidl().getAllAudio();
-            System.out.println(getAidl().getAllAudio());
+            songTitle= (ArrayList<String>)MainFragment.getAidl().getAllAudio();
+            System.out.println(MainFragment.getAidl().getAllAudio());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -42,7 +37,7 @@ public class Model implements ContractModel {
     @Override
     public void playSong(int position) {
         try {
-            getAidl().playSong(position);
+            MainFragment.getAidl().playSong(position);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -52,7 +47,7 @@ public class Model implements ContractModel {
     public boolean playPauseSong() {
         boolean playPauseStatus = false;
         try {
-            playPauseStatus=getAidl().playPauseSong();
+            playPauseStatus = MainFragment.getAidl().playPauseSong();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -66,7 +61,7 @@ public class Model implements ContractModel {
         List<String> songDetails = null;
         try {
             System.out.println("song details received at model");
-            songDetails= (List<String>) getAidl().getSongDetails(position);
+            songDetails= (List<String>) MainFragment.getAidl().getSongDetails(position);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -77,7 +72,7 @@ public class Model implements ContractModel {
     public int getcPosition() {
         int cPosition = 0;
         try {
-            cPosition = getAidl().getcposition();
+            cPosition = mainFragment.getAidl().getcposition();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -87,14 +82,14 @@ public class Model implements ContractModel {
     @Override
     public void seekToCall(int progress) {
         try {
-            getAidl().seekToCall(progress);
+            MainFragment.getAidl().seekToCall(progress);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
     }
 
-    public ServiceConnection getServiceConnectionObject() {
+   /* public ServiceConnection getServiceConnectionObject() {
         ServiceConnection serviceConnectionObject = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -108,9 +103,7 @@ public class Model implements ContractModel {
         return serviceConnectionObject;
     }
 
-
-
     public static aidlInterface getAidl(){
         return aidlInterface;
-    }
+    }*/
 }
