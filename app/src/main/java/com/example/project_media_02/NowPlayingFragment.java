@@ -50,6 +50,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         btn_next=v.findViewById(R.id.fr_nowplaying_ib_next);
         btn_previous=v.findViewById(R.id.fr_nowplaying_ib_previous);
         presenter = new Presenter();
+        
 
         btn_play_pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,16 +95,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         title1.setText("Song name   :   "+songDetails.get(0));
         album1.setText("album   :   "+songDetails.get(1));
         artist1.setText("Artist   :   "+songDetails.get(2));
-
-        String uri = songDetails.get(5);
-        if(uri!=null) {
-            imageView.setImageResource(R.drawable.images);
-        }
-        else
-        {
-            imageView.setImageResource(R.drawable.images);
-        }
-
+        imageView.setImageResource(R.drawable.images);
         btn_play_pause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         playStatus = true;
     }

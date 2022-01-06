@@ -19,7 +19,6 @@ public class Presenter implements ContractPresenter {
         model=new Model(presenter);
     }
     public Presenter() {
-
     }
 
     @Override
@@ -28,14 +27,6 @@ public class Presenter implements ContractPresenter {
         songsList = model.getAllAudio();
         view.setSongList(songsList); // To set song list in Song List Fragment
     }
-
-    @Override
-    public boolean PlayPauseButtonClick() {
-        boolean playPauseStatus=model.playPauseSong();
-        System.out.println("Song playing status in presenter "+playPauseStatus);
-        return playPauseStatus;
-    }
-
     @Override
     public void playSong(int position) {
         model.playSong(position);
@@ -48,8 +39,14 @@ public class Presenter implements ContractPresenter {
         List<String> songDetails;
         //get details of current song
         songDetails=model.getSongDetails(position);
-
         nowPlayingView.setSongDetails(songDetails);
+    }
+
+    @Override
+    public boolean PlayPauseButtonClick() {
+        boolean playPauseStatus = model.playPauseSong();
+        System.out.println("Song playing status in presenter " + playPauseStatus);
+        return playPauseStatus;
     }
 
     @Override
