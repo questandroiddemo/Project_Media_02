@@ -94,11 +94,9 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         title1.setText("Song name   :   "+songDetails.get(0));
         album1.setText("album   :   "+songDetails.get(1));
         artist1.setText("Artist   :   "+songDetails.get(2));
-        String duration = convert(songDetails.get(4));//to convert total duration into minutes and seconds
 
         String uri = songDetails.get(5);
         if(uri!=null) {
-//
             imageView.setImageResource(R.drawable.images);
         }
         else
@@ -108,34 +106,6 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
 
         btn_play_pause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         playStatus = true;
-    }
-
-    private String convert(String time) {
-        int milliseconds= Integer.parseInt(time);
-        String finalTimerString = "";
-        String secondsString = "";
-
-        // Convert total duration into time
-        int hours = (int) (milliseconds / (1000 * 60 * 60));
-        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
-        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
-
-        // Add hours if there
-        if (hours > 0) {
-            finalTimerString = hours + ":";
-        }
-
-        // Prepending 0 to seconds if it is one digit
-        if (seconds < 10) {
-            secondsString = "0" + seconds;
-        } else {
-            secondsString = "" + seconds;
-        }
-
-        finalTimerString = finalTimerString + minutes + ":" + secondsString;
-
-        // return timer string
-        return finalTimerString;
     }
 
 }
