@@ -1,7 +1,6 @@
 package com.example.project_media_02.Presenter;
 
 import com.example.project_media_02.View.ContractView;
-import com.example.project_media_02.MainFragment;
 import com.example.project_media_02.Model.Model;
 import com.example.project_media_02.NowPlayingFragment;
 
@@ -30,6 +29,7 @@ public class Presenter implements ContractPresenter {
     @Override
     public void playSong(int position) {
         model.playSong(position);
+
     }
 
     @Override
