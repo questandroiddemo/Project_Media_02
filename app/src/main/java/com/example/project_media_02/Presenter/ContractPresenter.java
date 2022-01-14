@@ -1,7 +1,5 @@
 package com.example.project_media_02.Presenter;
 
-import java.util.List;
-
 public interface ContractPresenter {
 
     void getAllAudio();

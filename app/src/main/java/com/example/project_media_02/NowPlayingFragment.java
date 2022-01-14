@@ -1,6 +1,5 @@
 package com.example.project_media_02;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -50,12 +49,17 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         btn_next=v.findViewById(R.id.fr_nowplaying_ib_next);
         btn_previous=v.findViewById(R.id.fr_nowplaying_ib_previous);
         presenter = new Presenter();
-        
 
+        try {
+            presenter.getSongDetails(0);
+                presenter.playSong(0);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getContext(),"No Audio files",Toast.LENGTH_SHORT).show();
+        }
         btn_play_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 playStatus= presenter.PlayPauseButtonClick();
                 System.out.println("playpause onclick called");
                 if(playStatus==true) {

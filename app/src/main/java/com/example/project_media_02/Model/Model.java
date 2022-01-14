@@ -13,13 +13,10 @@ public class Model implements ContractModel {
         this.presenter = presenter;
         mainFragment = new MainFragment();
     }
-
     ContractPresenter presenter;
-
     public Model() {
 
     }
-
     @Override
     public List<String> getAllAudio() {
         ArrayList<String> songTitle = new ArrayList<>();
@@ -40,14 +37,13 @@ public class Model implements ContractModel {
             e.printStackTrace();
         }
     }
-
     @Override
     public List<String> getSongDetails(int position) {
         System.out.println("getSongDetails()  called in model -----------------");
         List<String> songDetails = null;
         try {
             System.out.println("song details received at model");
-            songDetails = (List<String>) MainFragment.getAidl().getSongDetails(position);
+            songDetails = MainFragment.getAidl().getSongDetails(position);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

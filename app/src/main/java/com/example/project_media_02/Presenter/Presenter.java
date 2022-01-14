@@ -31,14 +31,13 @@ public class Presenter implements ContractPresenter {
         model.playSong(position);
 
     }
-
     @Override
     public void getSongDetails(int position) {
-        index =position;
+        index = position;
         nowPlayingView= new NowPlayingFragment();
         List<String> songDetails;
         //get details of current song
-        songDetails=model.getSongDetails(position);
+        songDetails=model.getSongDetails(index);
         nowPlayingView.setSongDetails(songDetails);
     }
 
