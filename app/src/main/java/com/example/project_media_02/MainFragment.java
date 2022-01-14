@@ -42,10 +42,10 @@ public class MainFragment extends Fragment {
 
         //initViewPager();
 
-        Intent intent = new Intent("com.example.service.AIDL");
+        Intent intent = new Intent("com.keltrontraining.asb_service.AIDL");
 
-        intent.setClassName("com.example.service",
-                "com.example.service.MediaService");
+        intent.setClassName("com.keltrontraining.asb_service",
+                "com.keltrontraining.asb_service.MediaService");
         if (getActivity().getBaseContext().getApplicationContext().bindService(intent, serviceConnectionObject, Context.BIND_AUTO_CREATE)) {
             connected = true;
             Toast.makeText(getContext(), "Bind service Successful - " + connected, Toast.LENGTH_LONG).show();

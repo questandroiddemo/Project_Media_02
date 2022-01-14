@@ -6,6 +6,7 @@ package AidlPackage;
 interface AidlInterface {
     boolean playPauseSong();
           void playSong(int position);
+          int getCurrentPosition();
           List<String> getAllAudio();
           List<String> getSongDetails(int position);
 }
