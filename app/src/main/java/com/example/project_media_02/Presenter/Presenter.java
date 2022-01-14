@@ -12,7 +12,10 @@ public class Presenter implements ContractPresenter {
     ContractView.NowPlayingView nowPlayingView;
     Presenter presenter;
     int index=0;
+    int totalDuration;
+    int currentPosition;
     int songListSize;
+    Thread updateSeekBar;
     public Presenter(ContractView.View view) {
         this.view = view;
         model=new Model(presenter);
@@ -39,7 +42,40 @@ public class Presenter implements ContractPresenter {
         //get details of current song
         songDetails=model.getSongDetails(index);
         nowPlayingView.setSongDetails(songDetails);
+        updateSeekBarMethod(songDetails);
+        updateSeekBar.start();
     }
+    private void updateSeekBarMethod(List<String> songDetails) {
+        System.out.println(" updateSeekBarMethod method called.........");
+        totalDuration = Integer.parseInt(songDetails.get(4));
+        nowPlayingView.setMax(totalDuration); //to set total duration of the song on seek bar
+
+        updateSeekBar =  new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                System.out.println("Thread run method called.........");
+                System.out.println("total duration : "+totalDuration);
+                System.out.println("current position : "+currentPosition);
+
+                while (totalDuration > currentPosition) {
+                    try {
+                        sleep(500);
+                        currentPosition = model.getCurrentPosition();
+                        System.out.println("cposition in thread : "+currentPosition);
+                        nowPlayingView.setProgress(currentPosition);
+
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        };
+    }
+
+
 
     @Override
     public boolean PlayPauseButtonClick() {
@@ -87,6 +123,9 @@ public class Presenter implements ContractPresenter {
         System.out.println("inside get song details now playing object value " + nowPlayingView);
         nowPlayingView= new NowPlayingFragment();
         nowPlayingView.setSongDetails(songDetails);
+    }
+    public void seekToCall(int progress) {
+        model.seekToCall(progress);//change media player current position on seek bar change
     }
 
 }

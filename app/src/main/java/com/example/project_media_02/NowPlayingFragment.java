@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
 
     static TextView title1,album1,artist1;
     static ImageView imageView;
+    static SeekBar songSeekBar;
     static ImageButton btn_play_pause,btn_previous,btn_next;
     View v;
     boolean playStatus;
@@ -44,6 +46,7 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         title1=v.findViewById(R.id.text);
         album1=v.findViewById(R.id.album);
         artist1=v.findViewById(R.id.artist);
+        songSeekBar=v.findViewById(R.id.songSeekBar);
         imageView=v.findViewById(R.id.imageView);
         btn_play_pause=v.findViewById(R.id.fr_nowplaying_ib_play_pause);
         btn_next=v.findViewById(R.id.fr_nowplaying_ib_next);
@@ -81,6 +84,25 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
             }
         });
 
+        //On seekBar Drag
+        songSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                presenter.seekToCall(seekBar.getProgress());
+            }
+        });
+
+
         // Previous Button click
         btn_previous.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +112,15 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
         });
 
         return v;
+    }
+    @Override
+    public void setProgress(int currentPosition) {
+        songSeekBar.setProgress(currentPosition);
+    }
+
+    @Override
+    public void setMax(int totalDuration) {
+            songSeekBar.setMax(totalDuration);
     }
 
     @Override

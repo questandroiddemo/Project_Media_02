@@ -51,6 +51,16 @@ public class Model implements ContractModel {
     }
 
     @Override
+    public void seekToCall(int progress) {
+        try {
+            MainFragment.getAidl().seekToCall(progress);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public boolean playPauseSong() {
         boolean playPauseStatus = false;
         try {
@@ -60,6 +70,17 @@ public class Model implements ContractModel {
         }
         System.out.println("playPause in model called");
         return playPauseStatus;
+    }
+
+    @Override
+    public int getCurrentPosition() {
+        int currentPosition = 0;
+        try {
+            currentPosition = mainFragment.getAidl().getCurrentPosition();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return currentPosition;
     }
 }
 
