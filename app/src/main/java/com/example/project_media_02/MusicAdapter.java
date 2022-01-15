@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_media_02.Presenter.ContractPresenter;
@@ -19,6 +20,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
     ContractPresenter presenter;
     private Context mContext;
     private List<String> allAudio;
+    ViewPagerAdapter viewPager;
     MusicAdapter(Context mContext, List<String> allAudio){
         this.mContext = mContext;
         this.allAudio=allAudio;
@@ -46,7 +48,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
                 System.out.println("position--------------- "+position);
                 presenter.playSong(position);
                 presenter.getSongDetails(position);
-                //viewPager.setCurrentItem(0);
+
             }
         });
     }

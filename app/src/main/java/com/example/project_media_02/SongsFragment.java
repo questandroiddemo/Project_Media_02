@@ -45,5 +45,4 @@ public class SongsFragment extends Fragment implements ContractView.View{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(musicAdapter);
     }
-
 }

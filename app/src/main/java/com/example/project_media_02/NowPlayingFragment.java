@@ -127,12 +127,11 @@ public class NowPlayingFragment extends Fragment implements ContractView.NowPlay
     public void setSongDetails(List<String> songDetails) {
         System.out.println("call reached to setSongDetails in nowPlaying");
         System.out.println("songDetails.get(0)  value " +songDetails.get(0));
-        title1.setText("Song name   :   "+songDetails.get(0));
-        album1.setText("album   :   "+songDetails.get(1));
+        title1.setText("Song Name   :   "+songDetails.get(0));
+        album1.setText("Album   :   "+songDetails.get(1));
         artist1.setText("Artist   :   "+songDetails.get(2));
         imageView.setImageResource(R.drawable.images);
         btn_play_pause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         playStatus = true;
     }
-
 }

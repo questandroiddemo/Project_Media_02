@@ -31,10 +31,13 @@ public  class ViewPagerAdapter extends FragmentPagerAdapter {
         fragmentTitle.add(title);
     }
 
+
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return fragmentTitle.get(position);
     }
+
+
 
 }
