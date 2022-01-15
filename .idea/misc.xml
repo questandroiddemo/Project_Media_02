@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/grad_frag_settings.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/ic_baseline_skip_next_24.xml" value="0.1" />
+        <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/ic_baseline_skip_previous_24.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/layout/activity_binding_to_service.xml" value="0.25" />
         <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/layout/activity_main.xml" value="0.24205128205128204" />
         <entry key="..\:/Users/akhil/AndroidStudioProjects/Project_Media_02/app/src/main/res/layout/activity_main2.xml" value="0.24583333333333332" />

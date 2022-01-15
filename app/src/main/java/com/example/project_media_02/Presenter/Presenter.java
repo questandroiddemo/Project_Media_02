@@ -62,7 +62,7 @@ public class Presenter implements ContractPresenter {
                     try {
                         sleep(500);
                         currentPosition = model.getCurrentPosition();
-                        System.out.println("cposition in thread : "+currentPosition);
+                      //  System.out.println("cposition in thread : "+currentPosition);
                         nowPlayingView.setProgress(currentPosition);
 
                     }

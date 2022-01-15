@@ -25,10 +25,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"/>
+
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
@@ -87,10 +84,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"/>
 
                 <ImageButton
                     android:id="@+id/fr_nowplaying_ib_previous"
